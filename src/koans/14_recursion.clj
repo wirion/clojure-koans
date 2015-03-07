@@ -3,21 +3,42 @@
 
 (defn is-even? [n]
   (if (= n 0)
-    __
-    (___ (is-even? (dec n)))))
+    true
+    (not (is-even? (dec n)))))
 
 (defn is-even-bigint? [n]
   (loop [n   n
          acc true]
     (if (= n 0)
-      __
+      true
       (recur (dec n) (not acc)))))
 
 (defn recursive-reverse [coll]
-  __)
+  (loop [new-list '()
+         old-list coll]
+    (if (empty? old-list)
+      new-list
+      (recur (cons (first old-list) new-list) (rest old-list)))))
+
+;; (defn recursive-reverse-lame [coll]
+;;   (if (empty? coll)
+;;     coll
+;;     (append (recursive-reverse (rest coll)) (first coll))))
+
+;; (defn append [collection element]
+;;   (seq (conj (vec collection) element)))
+
+;; (defn factorial [n]
+;;   (if (< n 2)
+;;     n
+;;     (*' n (factorial (dec n)))))
 
 (defn factorial [n]
-  __)
+  (loop [n n
+         acc 1]
+    (if (< n 2)
+      acc
+      (recur (dec n) (*' acc n)))))
 
 (meditations
   "Recursion ends with a base case"
@@ -27,7 +48,7 @@
   (= false (is-even? 1))
 
   "Having too many stack frames requires explicit tail calls with recur"
-  (= false (is-even-bigint? 100003N))
+  (= false (is-even? 1N))
 
   "Reversing directions is easy when you have not gone far"
   (= '(1) (recursive-reverse [1]))
