@@ -18,4 +18,4 @@
   (= '((0 1 2) (3 4 5) (6 :hello)) (partition 3 3 [:hello] (range 7)))
 
   "... but notice that they will only pad up to the given sequence length"
-  (= '((0 1 2) (3 4 5) (:these :are)) (partition 3 3 [:these :are "my" "words"] (range 7))))
+  (= '((0 1 2) (3 4 5) (6 :these :are)) (partition 3 3 [:these :are "my" "words"] (range 7))))
