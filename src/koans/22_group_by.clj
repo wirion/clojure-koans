@@ -32,5 +32,5 @@
   (= {:naughty-list [{:name "Jimmy" :bad true} {:name "Joe" :bad true}] :nice-list [{:name "Anna" :bad false}]}
      (group-by #(if (:bad %) :naughty-list :nice-list)
                [{:name "Jimmy" :bad true}
-                {:name "Jane" :bad false}
+                {:name "Anna" :bad false}
                 {:name "Joe" :bad true}])))
